@@ -2,6 +2,7 @@
 set -e 
 set -o pipefail
 git merge -m "Merge remote-tracking branch 'foreman-installer/master' by rel-eng/build.sh" foreman-installer/master
+git submodule update
 #just test if we are able to create srpm, and do not proceed if there is big change in code
 tito build --test --srpm
 
