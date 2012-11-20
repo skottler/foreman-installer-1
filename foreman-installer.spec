@@ -1,8 +1,9 @@
 %global foreman_root %{_datarootdir}/foreman-installer
+%global foreman_hash .eb4cc43
 
 Name:		foreman-installer
-Version:	1.0.1
-Release:	0%{?dist}
+Version:	1.0.2
+Release:	0%{foreman_hash}%{?dist}
 Summary:	Automated Foreman installation and configuration
 
 Group:		Applications/System
