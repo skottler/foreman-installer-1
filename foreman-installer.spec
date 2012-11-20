@@ -2,8 +2,8 @@
 %global foreman_hash .eb4cc43
 
 Name:		foreman-installer
-Version:	1.0.2
-Release:	0%{foreman_hash}%{?dist}
+Version:	1.0.3
+Release:	1%{foreman_hash}%{?dist}
 Summary:	Automated Foreman installation and configuration
 
 Group:		Applications/System
@@ -45,4 +45,7 @@ the tweaks required for foreman.
 
 
 %changelog
+* Tue Nov 20 2012 Miroslav Suchý <msuchy@redhat.com> 1.0.3-1.eb4cc43
+- new package built with tito
+
 
