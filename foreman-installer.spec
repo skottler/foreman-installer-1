@@ -12,8 +12,14 @@ URL:		https://github.com/theforeman/foreman-installer
 # TODO - put here documentation how tar.gz is created
 Source0:	%{name}-%{version}.tar.gz
 
-#BuildRequires:	
-#Requires:	
+Requires:	foreman-installer-puppet-apache
+Requires:   foreman-installer-puppet-foreman
+Requires:   foreman-installer-puppet-foreman_proxy
+Requires:   foreman-installer-puppet-passenger
+Requires:   foreman-installer-puppet-puppet
+Requires:   foreman-installer-puppet-tftp
+Requires:   foreman-installer-puppet-xinetd
+Requires:   puppet
 
 %description
 Installs Foreman as a standalone application or using apache passenger.
@@ -31,16 +37,10 @@ the tweaks required for foreman.
 #nothing to do
 
 %install
-mkdir -p %{buildroot}/%{foreman_root}
-for MODULE in apache concat dhcp dns foreman foreman_proxy git passenger puppet tftp xinetd; do
-   mkdir -p %{buildroot}/%{foreman_root}/$MODULE
-   cp -a $MODULE/* %{buildroot}/%{foreman_root}/$MODULE/
-done
-find %{buildroot}/%{foreman_root} -name .git | while read i; do rm -f $i; done
+#nothing to do
 
 %files
 %doc README.md
-%{foreman_root}
 
 
 
