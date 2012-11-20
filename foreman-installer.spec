@@ -2,7 +2,7 @@
 %global foreman_hash .eb4cc43
 
 Name:		foreman-installer
-Version:	1.0.3
+Version:	1.0.1
 Release:	1%{foreman_hash}%{?dist}
 Summary:	Automated Foreman installation and configuration
 
