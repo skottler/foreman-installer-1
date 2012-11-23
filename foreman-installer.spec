@@ -13,13 +13,31 @@ URL:		https://github.com/theforeman/foreman-installer
 Source0:	%{name}-%{version}.tar.gz
 
 Requires:	foreman-installer-puppet-apache
+Requires:   httpd
+
 Requires:   foreman-installer-puppet-foreman
+Requires:   foreman
+
 Requires:   foreman-installer-puppet-foreman_proxy
+Requires:   foreman-proxy
+
 Requires:   foreman-installer-puppet-passenger
+Requires:   mod_passenger
+
 Requires:   foreman-installer-puppet-puppet
-Requires:   foreman-installer-puppet-tftp
-Requires:   foreman-installer-puppet-xinetd
 Requires:   puppet
+
+Requires:   foreman-installer-puppet-tftp
+Requires:   tftp-server
+
+Requires:   foreman-installer-puppet-xinetd
+Requires:   xinetd
+
+Requires:   foreman-installer-puppet-dhcp
+Requires:   dhcp
+
+Requires:   foreman-installer-puppet-dns
+Requires:   bind
 
 %description
 Installs Foreman as a standalone application or using apache passenger.
