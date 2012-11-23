@@ -43,10 +43,31 @@ Requires:   bind
 %description
 Installs Foreman as a standalone application or using apache passenger.
 
-Installs Foreman Proxy
-
 May install an example puppet master setup using passenger as well, including
-the tweaks required for foreman.
+the tweaks required for Foreman.
+
+
+%package -n foreman_proxy-installer
+Summary:    Automated Foreman Smart Proxy installation and configuration
+Requires:   foreman-installer-puppet-foreman_proxy
+Requires:   foreman-proxy
+
+Requires:   foreman-installer-puppet-puppet
+Requires:   puppet
+
+Requires:   foreman-installer-puppet-tftp
+Requires:   tftp-server
+
+Requires:   foreman-installer-puppet-dhcp
+Requires:   dhcp
+
+Requires:   foreman-installer-puppet-dns
+Requires:   bind
+
+%description -n foreman_proxy-installer
+Installs Foreman Smart Proxy.
+
+
 
 %prep
 %setup -q
@@ -61,6 +82,7 @@ the tweaks required for foreman.
 %files
 %doc README.md
 
+%files -n foreman_proxy-installer
 
 
 %changelog
