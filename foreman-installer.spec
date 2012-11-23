@@ -47,7 +47,7 @@ May install an example puppet master setup using passenger as well, including
 the tweaks required for Foreman.
 
 
-%package -n foreman_proxy-installer
+%package -n foreman-proxy-installer
 Summary:    Automated Foreman Smart Proxy installation and configuration
 Requires:   foreman-installer-puppet-foreman_proxy
 Requires:   foreman-proxy
@@ -64,7 +64,7 @@ Requires:   dhcp
 Requires:   foreman-installer-puppet-dns
 Requires:   bind
 
-%description -n foreman_proxy-installer
+%description -n foreman-proxy-installer
 Installs Foreman Smart Proxy.
 
 
@@ -82,7 +82,7 @@ Installs Foreman Smart Proxy.
 %files
 %doc README.md
 
-%files -n foreman_proxy-installer
+%files -n foreman-proxy-installer
 
 
 %changelog
