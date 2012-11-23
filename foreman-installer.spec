@@ -3,7 +3,7 @@
 
 Name:		foreman-installer
 Version:	1.0.1
-Release:	3%{foreman_hash}%{?dist}
+Release:	4%{foreman_hash}%{?dist}
 Summary:	Automated Foreman installation and configuration
 
 Group:		Applications/System
@@ -86,6 +86,9 @@ Installs Foreman Smart Proxy.
 
 
 %changelog
+* Fri Nov 23 2012 Miroslav Suchý <msuchy@redhat.com> 1.0.1-4.eb4cc43
+- rename foreman_proxy-installer to foreman-proxy-installer
+
 * Fri Nov 23 2012 Miroslav Suchý <msuchy@redhat.com> 1.0.1-3.eb4cc43
 - create foreman_proxy-installer subpackage
 - package is noarch
