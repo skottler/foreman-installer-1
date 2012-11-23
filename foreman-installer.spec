@@ -11,6 +11,7 @@ License:	GPLv3
 URL:		https://github.com/theforeman/foreman-installer
 # TODO - put here documentation how tar.gz is created
 Source0:	%{name}-%{version}.tar.gz
+BuildArch:  noarch
 
 Requires:	foreman-installer-puppet-apache
 Requires:   httpd
