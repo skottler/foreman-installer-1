@@ -3,7 +3,7 @@
 
 Name:		foreman-installer
 Version:	1.0.1
-Release:	4%{foreman_hash}%{?dist}
+Release:	5%{foreman_hash}%{?dist}
 Summary:	Automated Foreman installation and configuration
 
 Group:		Applications/System
@@ -100,6 +100,13 @@ install -m 0644 options-format-file %{buildroot}%{foreman_root}
 %{foreman_root}
 
 %changelog
+* Mon Feb 11 2013 Miroslav Suchý <msuchy@redhat.com> 1.0.1-5.eb4cc43
+- disable dhcp by default and put dhcp option to default-answer-file
+- disable ssl until it is prepared
+- add script foreman-proxy-configure
+- Update foreman_proxy_installer.pp
+- Simple application of the foreman_proxy_insteller with custom values
+
 * Fri Nov 23 2012 Miroslav Suchý <msuchy@redhat.com> 1.0.1-4.eb4cc43
 - rename foreman_proxy-installer to foreman-proxy-installer
 
