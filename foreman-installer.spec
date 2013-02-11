@@ -49,6 +49,10 @@ the tweaks required for Foreman.
 
 %package -n foreman-proxy-installer
 Summary:    Automated Foreman Smart Proxy installation and configuration
+Requires:   rubygem(ruby-progressbar)
+Requires:   katello-configure
+Requires:   foreman-installer-puppet-foreman
+
 Requires:   foreman-installer-puppet-foreman_proxy
 Requires:   foreman-proxy
 
@@ -64,6 +68,9 @@ Requires:   dhcp
 Requires:   foreman-installer-puppet-dns
 Requires:   bind
 
+Requires:   foreman-installer-puppet-xinetd
+Requires:   xinetd
+
 %description -n foreman-proxy-installer
 Installs Foreman Smart Proxy.
 
@@ -77,13 +84,20 @@ Installs Foreman Smart Proxy.
 #nothing to do
 
 %install
-#nothing to do
+install -d -m 755 %{buildroot}%{_sbindir}
+install -m 755 bin/foreman-proxy-configure %{buildroot}%{_sbindir}
+
+install -d -m 755 %{buildroot}%{foreman_root}
+install -m 0644 default-answer-file %{buildroot}%{foreman_root}
+install -m 0644 options-format-file %{buildroot}%{foreman_root}
 
 %files
 %doc README.md
+%{foreman_root}
 
 %files -n foreman-proxy-installer
-
+%{_sbindir}/foreman-proxy-configure
+%{foreman_root}
 
 %changelog
 * Fri Nov 23 2012 Miroslav Suchý <msuchy@redhat.com> 1.0.1-4.eb4cc43
