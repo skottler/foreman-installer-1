@@ -11,16 +11,22 @@ port = 9090
 puppetca = false
 
 # manage DHCP (default: true)
-dhcp = true
+dhcp = false
 
 # List of interfaces for which DHCP will be set up (default "eth1")
-dhcp_interface = "eth1",
+dhcp_interface = eth1,
+
+# DHCP gateway
+dhcp_gateway = '192.168.100.1'
+
+# DHCP range
+dhcp_range = '192.168.100.50 192.168.100.200'
 
 # Enable DNS (default: true)
 dns = true
 
 # List of interfaces for which DNS will be set up (default "eth1")
-dns_interface = "eth1",
+dns_interface = eth1
 
 # Enable TFTP (default: true)
 tftp = true
