@@ -209,10 +209,12 @@ class { foreman_proxy:
   dns_interface     => "#{_get_valid_option_value('dns_interface', $default_options, $final_options)}",
   port              => "#{_get_valid_option_value('port', $default_options, $final_options)}",
   puppetca          => #{_get_valid_option_value('puppetca', $default_options, $final_options)},
+  ssl_ca            => false,
+  ssl_cert          => false,
+  ssl_key           => false,
   tftp_servername   => "#{facter_hostname}",
   tftp              => #{_get_valid_option_value('tftp', $default_options, $final_options)},
 }
-
 COMMAND
 
 if debug_stdout
