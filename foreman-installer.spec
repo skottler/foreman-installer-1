@@ -3,7 +3,7 @@
 
 Name:		foreman-installer
 Version:	1.0.1
-Release:	5%{foreman_hash}%{?dist}
+Release:	6%{foreman_hash}%{?dist}
 Summary:	Automated Foreman installation and configuration
 
 Group:		Applications/System
@@ -100,6 +100,37 @@ install -m 0644 options-format-file %{buildroot}%{foreman_root}
 %{foreman_root}
 
 %changelog
+* Fri Apr 05 2013 Miroslav Suchý <msuchy@redhat.com> 1.0.1-6.f5ae2cd
+- Automatic rebase to latest nightly Foreman-installer
+- Merge remote-tracking branch 'foreman-installer/master' by rel-eng/build.sh
+- mark rel-eng/build.sh as executable
+- remove Fedora 17 releasers
+- Remove pp file: cli is there already
+- Merge branch 'develop'
+- Updated modules for 1.1-1 release
+- Remove sudo requirement from generate_answers, only run Puppet if root
+- Merge remote-tracking branch 'project/develop'
+- Allow for modulepaths other than pwd
+- Removed the develop branch from clone instructions
+- Updated submodules to latest and added option to run puppet to the generator
+- Use Puppet's own create_resources function if available
+- Add create_resources from puppetlabs to make this work on 2.6
+- Ensure the terminal global is always set
+- Fix Puppet 2.6 compatibility, parse error with hash in function call
+- Use git submodule foreach
+- Add answers generator v0.1
+- Version bump
+- Bump foreman/foreman_proxy/puppet for 1.1RC repo support
+- Update README.md
+- Bump dhcp/dns/foreman/foreman_proxy/passenger/puppet
+- Rename loadyaml to loadanyyaml to prevent stdlib conflict
+- bump concat/dhcp/puppet/foreman/tftp
+- Throw error when YAML type is unknown
+- Change YAML path to /etc/foreman-proxy/answers.yaml for consistency
+  Parameterise foreman_installer class for answers.yaml location
+- Update foreman, foreman_proxy, and puppet module commits
+- Reapply YAML in develop branch
+
 * Mon Feb 11 2013 Miroslav Suchý <msuchy@redhat.com> 1.0.1-5.eb4cc43
 - disable dhcp by default and put dhcp option to default-answer-file
 - disable ssl until it is prepared
