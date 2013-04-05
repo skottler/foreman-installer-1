@@ -1,5 +1,5 @@
 %global foreman_root %{_datarootdir}/foreman-installer
-%global foreman_hash .eb4cc43
+%global foreman_hash .f5ae2cd
 
 Name:		foreman-installer
 Version:	1.0.1
