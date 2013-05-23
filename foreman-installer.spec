@@ -1,7 +1,7 @@
 %{?scl:%scl_package foreman-installer}
 %{!?scl:%global pkg_name %{name}}
 
-%global foreman_root %{_root_datarootdir}/foreman-installer
+%global foreman_root %{?!scl:%{_datadir}}%{?scl:%{_root_datadir}}/foreman-installer
 %global foreman_hash .f5ae2cd
 
 Name:		foreman-installer
@@ -92,8 +92,8 @@ Installs Foreman Smart Proxy.
 %endif
 
 %install
-install -d -m 755 %{buildroot}%{_sbindir}
-install -m 755 bin/foreman-proxy-configure %{buildroot}%{_sbindir}
+install -d -m 755 %{buildroot}%{?!scl:%{_sbindir}}%{?scl:%{_root_sbindir}}
+install -m 755 bin/foreman-proxy-configure %{buildroot}%{?!scl:%{_sbindir}}%{?scl:%{_root_sbindir}}
 
 install -d -m 755 %{buildroot}%{foreman_root}
 install -m 0644 default-answer-file %{buildroot}%{foreman_root}
@@ -104,7 +104,7 @@ install -m 0644 options-format-file %{buildroot}%{foreman_root}
 %{foreman_root}
 
 %files -n foreman-proxy-installer
-%{_root_sbindir}/foreman-proxy-configure
+%{?!scl:%{_sbindir}}%{?scl:%{_root_sbindir}}/foreman-proxy-configure
 %{foreman_root}
 
 %changelog
