@@ -29,7 +29,7 @@ $stdout.sync = true
 default_path = "#{PREFIX}/default-answer-file"
 options_format_path = "#{PREFIX}/options-format-file"
 result_config_path = "/etc/foreman-proxy/foreman-proxy-configure.conf"
-puppet_cmd = "puppet apply --modulepath #{PREFIX} --libdir /usr/share/katello/install/puppet/lib -v -d"
+puppet_cmd = "/usr/bin/puppet apply --modulepath #{PREFIX} --libdir /usr/share/katello/install/puppet/lib -v -d"
 log_parent_directory = '/var/log/foreman-proxy'
 default_progressbar_title = 'Foreman Proxy configuration'
 
