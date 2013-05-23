@@ -87,8 +87,8 @@ Installs Foreman Smart Proxy.
 
 %build
 %if %{?scl:1}%{!?scl:0}
-    sed -i '1sX/usr/bin/rubyX%/usr/bin/ruby193-rubyX'
-    sed -i '1,$sX/usr/bin/puppetX%/usr/bin/ruby193-puppetX'
+    sed -i '1sX/usr/bin/rubyX%/usr/bin/ruby193-rubyX' bin/foreman-proxy-configure
+    sed -i '1,$sX/usr/bin/puppetX%/usr/bin/ruby193-puppetX' bin/foreman-proxy-configure
 %endif
 
 %install
