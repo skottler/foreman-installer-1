@@ -76,7 +76,7 @@ Requires:   bind
 Requires:   foreman-installer-puppet-xinetd
 Requires:   xinetd
 
-%description -n %{?scl_prefix}foreman-proxy-installer
+%description -n foreman-proxy-installer
 Installs Foreman Smart Proxy.
 
 
@@ -103,7 +103,7 @@ install -m 0644 options-format-file %{buildroot}%{foreman_root}
 %doc README.md
 %{foreman_root}
 
-%files -n %{?scl_prefix}foreman-proxy-installer
+%files -n foreman-proxy-installer
 %{_root_sbindir}/foreman-proxy-configure
 %{foreman_root}
 
