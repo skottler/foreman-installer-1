@@ -1,7 +1,7 @@
 %{?scl:%scl_package foreman-installer}
 %{!?scl:%global pkg_name %{name}}
 
-%global foreman_root %{_datarootdir}/foreman-installer
+%global foreman_root %{_root_datarootdir}/foreman-installer
 %global foreman_hash .f5ae2cd
 
 Name:		foreman-installer
@@ -51,7 +51,7 @@ May install an example puppet master setup using passenger as well, including
 the tweaks required for Foreman.
 
 
-%package -n %{?scl_prefix}foreman-proxy-installer
+%package -n foreman-proxy-installer
 Summary:    Automated Foreman Smart Proxy installation and configuration
 Requires:   %{?scl_prefix}rubygem(ruby-progressbar)
 Requires:   katello-configure
@@ -88,7 +88,7 @@ Installs Foreman Smart Proxy.
 %build
 %if %{?scl:1}%{!?scl:0}
     sed -i '1sX/usr/bin/rubyX%/usr/bin/ruby193-rubyX' bin/foreman-proxy-configure
-    sed -i '1,$sX/usr/bin/puppetX%/usr/bin/ruby193-puppetX' bin/foreman-proxy-configure
+    sed -i '1,$sX/usr/bin/puppetX/usr/bin/ruby193-puppetX' bin/foreman-proxy-configure
 %endif
 
 %install
@@ -104,7 +104,7 @@ install -m 0644 options-format-file %{buildroot}%{foreman_root}
 %{foreman_root}
 
 %files -n %{?scl_prefix}foreman-proxy-installer
-%{_sbindir}/foreman-proxy-configure
+%{_root_sbindir}/foreman-proxy-configure
 %{foreman_root}
 
 %changelog
