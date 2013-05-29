@@ -1,4 +1,7 @@
-%global foreman_root %{_datarootdir}/foreman-installer
+%{?scl:%scl_package foreman-installer}
+%{!?scl:%global pkg_name %{name}}
+
+%global foreman_root %{?!scl:%{_datadir}}%{?scl:%{_root_datadir}}/foreman-installer
 %global foreman_hash .f5ae2cd
 
 Name:		foreman-installer
@@ -10,8 +13,9 @@ Group:		Applications/System
 License:	GPLv3
 URL:		https://github.com/theforeman/foreman-installer
 # TODO - put here documentation how tar.gz is created
-Source0:	%{name}-%{version}.tar.gz
+Source0:	%{pkg_name}-%{version}.tar.gz
 BuildArch:  noarch
+BuildRequires: sed
 
 Requires:	foreman-installer-puppet-apache
 Requires:   httpd
@@ -26,7 +30,7 @@ Requires:   foreman-installer-puppet-passenger
 Requires:   mod_passenger
 
 Requires:   foreman-installer-puppet-puppet
-Requires:   puppet
+Requires:   %{?scl_prefix}puppet
 
 Requires:   foreman-installer-puppet-tftp
 Requires:   tftp-server
@@ -49,15 +53,16 @@ the tweaks required for Foreman.
 
 %package -n foreman-proxy-installer
 Summary:    Automated Foreman Smart Proxy installation and configuration
-Requires:   rubygem(ruby-progressbar)
+Requires:   %{?scl_prefix}rubygem(ruby-progressbar)
 Requires:   katello-configure
 Requires:   foreman-installer-puppet-foreman
+Requires:   %{?scl_prefix}ruby
 
 Requires:   foreman-installer-puppet-foreman_proxy
 Requires:   foreman-proxy
 
 Requires:   foreman-installer-puppet-puppet
-Requires:   puppet
+Requires:   %{?scl_prefix}puppet
 
 Requires:   foreman-installer-puppet-tftp
 Requires:   tftp-server
@@ -77,15 +82,18 @@ Installs Foreman Smart Proxy.
 
 
 %prep
-%setup -q
+%setup -n %{pkg_name}-%{version} -q
 
 
 %build
-#nothing to do
+%if %{?scl:1}%{!?scl:0}
+    sed -i '1sX/usr/bin/rubyX/usr/bin/ruby193-rubyX' bin/foreman-proxy-configure
+    sed -i '1,$sX/usr/bin/puppetX/usr/bin/ruby193-puppetX' bin/foreman-proxy-configure
+%endif
 
 %install
-install -d -m 755 %{buildroot}%{_sbindir}
-install -m 755 bin/foreman-proxy-configure %{buildroot}%{_sbindir}
+install -d -m 755 %{buildroot}%{?!scl:%{_sbindir}}%{?scl:%{_root_sbindir}}
+install -m 755 bin/foreman-proxy-configure %{buildroot}%{?!scl:%{_sbindir}}%{?scl:%{_root_sbindir}}
 
 install -d -m 755 %{buildroot}%{foreman_root}
 install -m 0644 default-answer-file %{buildroot}%{foreman_root}
@@ -96,7 +104,7 @@ install -m 0644 options-format-file %{buildroot}%{foreman_root}
 %{foreman_root}
 
 %files -n foreman-proxy-installer
-%{_sbindir}/foreman-proxy-configure
+%{?!scl:%{_sbindir}}%{?scl:%{_root_sbindir}}/foreman-proxy-configure
 %{foreman_root}
 
 %changelog

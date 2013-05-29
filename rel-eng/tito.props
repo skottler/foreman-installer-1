@@ -6,6 +6,7 @@ changelog_format = %s
 
 [katello-thirdparty-foreman-rhel6]
 disttag = .el6
+scl = ruby193
 
 [katello-thirdparty-foreman-fedora18]
 disttag = .fc18

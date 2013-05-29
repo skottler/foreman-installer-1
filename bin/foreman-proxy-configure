@@ -29,7 +29,7 @@ $stdout.sync = true
 default_path = "#{PREFIX}/default-answer-file"
 options_format_path = "#{PREFIX}/options-format-file"
 result_config_path = "/etc/foreman-proxy/foreman-proxy-configure.conf"
-puppet_cmd = "puppet apply --modulepath #{PREFIX} --libdir /usr/share/katello/install/puppet/lib -v -d"
+puppet_cmd = "/usr/bin/puppet apply --modulepath #{PREFIX} --libdir /usr/share/katello/install/puppet/lib -v -d"
 log_parent_directory = '/var/log/foreman-proxy'
 default_progressbar_title = 'Foreman Proxy configuration'
 
@@ -161,7 +161,8 @@ puts 'Starting Foreman Proxy configuration'
 create_answer_file(result_config_path, $final_options, $default_options_order, $titles)
 
 # additional temporary file which is also used (but deleted afterwards)
-temp_config_path = create_temp_config_file($temp_options)
+temp_config = create_temp_config_file($temp_options)
+temp_config_path = temp_config.path
 
 now = Time.now.strftime("%Y%m%d-%H%M%S")
 log_directory = log_parent_directory + '/foreman-proxy-configure-' + now
