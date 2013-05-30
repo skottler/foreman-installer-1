@@ -6,7 +6,7 @@
 
 Name:		foreman-installer
 Version:	1.0.1
-Release:	6%{foreman_hash}%{?dist}
+Release:	7%{foreman_hash}%{?dist}
 Summary:	Automated Foreman installation and configuration
 
 Group:		Applications/System
@@ -108,6 +108,15 @@ install -m 0644 options-format-file %{buildroot}%{foreman_root}
 %{foreman_root}
 
 %changelog
+* Thu May 30 2013 Mike McCune <mmccune@redhat.com> 1.0.1-7.f5ae2cd
+- remove percent sign (typo) from sed expression
+- fixing user pass install not working
+- use non-scl paths on non-scl distribution
+- even subpackage should be without scl prefix
+- do not install files into /opt directory
+- pass filename to sed
+- migrate to SCL
+
 * Fri Apr 05 2013 Miroslav Suchý <msuchy@redhat.com> 1.0.1-6.f5ae2cd
 - Automatic rebase to latest nightly Foreman-installer
 - Merge remote-tracking branch 'foreman-installer/master' by rel-eng/build.sh
