@@ -38,12 +38,6 @@ Requires:   tftp-server
 Requires:   foreman-installer-puppet-xinetd
 Requires:   xinetd
 
-Requires:   foreman-installer-puppet-dhcp
-Requires:   dhcp
-
-Requires:   foreman-installer-puppet-dns
-Requires:   bind
-
 %description
 Installs Foreman as a standalone application or using apache passenger.
 
@@ -66,12 +60,6 @@ Requires:   %{?scl_prefix}puppet
 
 Requires:   foreman-installer-puppet-tftp
 Requires:   tftp-server
-
-Requires:   foreman-installer-puppet-dhcp
-Requires:   dhcp
-
-Requires:   foreman-installer-puppet-dns
-Requires:   bind
 
 Requires:   foreman-installer-puppet-xinetd
 Requires:   xinetd
